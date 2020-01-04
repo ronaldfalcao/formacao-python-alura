@@ -1,0 +1,11 @@
+banana
+morango
+melancia
+laranja
+tangerina
+uva
+nectarina
+kiwi
+framboesa
+amora
+carambola
