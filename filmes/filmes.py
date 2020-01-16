@@ -1,3 +1,7 @@
+class Programa:
+    pass
+
+
 class Filme:
 
     def __init__(self, nome, ano, duracao, likes):
@@ -55,6 +59,8 @@ class Serie:
         self.__likes += 1
 
 
-filme = Filme("a morte do caixeiro viajante", 1951, 105, 0)
-filme.dar_likes()
-print(filme.likes)
+# Permite rodar no terminal
+if __name__ == '__main__':
+    filme = Filme("a morte do caixeiro viajante", 1951, 105, 0)
+    filme.dar_likes()
+    print(filme.likes)
