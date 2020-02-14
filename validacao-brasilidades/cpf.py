@@ -1,3 +1,5 @@
+from validate_docbr import CPF
+
 class Cpf:
 
     def __init__(self, numero):
@@ -11,15 +13,17 @@ class Cpf:
     @staticmethod
     def cpf_eh_valido(numero):
 
-        if len(str(numero)) == 11:
+        validador = CPF()
+
+        if validador.validate(str(numero)):
             return True
         else:
             return False
 
     def formatar_cpf(self):
 
-        numero = str(self.numero_documento)
-        return f'{numero[:3]}.{numero[3:6]}.{numero[6:9]}-{numero[9:]}'
+        mascara = CPF()
+        return mascara.mask(str(self.numero_documento))
 
     def __str__(self):
         return self.formatar_cpf()
