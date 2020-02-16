@@ -13,5 +13,3 @@ class CpfCnpj:
             return Cnpj(documento)
         else:
             raise ValueError("Número de Documento Inválido, utilize 11 (CFP) ou 14 (CNPJ) caracteres.")
-
-

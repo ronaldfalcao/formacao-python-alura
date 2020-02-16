@@ -1,6 +1,7 @@
 from cpf import Cpf
 from cnpj import Cnpj
 from cpf_cnpj import CpfCnpj
+from documento import Documento
 
 
 # Utilizando a classe CPF criada.
@@ -29,10 +30,11 @@ print("\nCriando CNPJ")
 documento = CpfCnpj.criar_novo_documento("45066477000108", 'cnpj')
 print(documento)
 
+# Utilizando a classe Documento
+print("\nCriando CPF")
+documento = Documento.criar_novo_documento("22836211008")  # CPF
+print(documento)
 
-"""
-Criar esquema de factory Factory(classe Documento), DocCpf e DocCnpj)
-
-"""
-
-
+print("\nCriando CNPJ")
+documento = Documento.criar_novo_documento("76429709000179")  # CNPJ
+print(documento)
