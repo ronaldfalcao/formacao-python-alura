@@ -3,6 +3,7 @@ from cnpj import Cnpj
 from cpf_cnpj import CpfCnpj
 from documento import Documento
 from telefones_br import Telefones
+from datas_br import DatasBr
 
 
 # Utilizando a classe CPF criada.
@@ -52,3 +53,13 @@ print(telefone)
 print("\nCriando telefones")
 telefone = Telefones('1234543322')  # Sem código de país.
 print(telefone)
+
+print("\nDatas")
+data = DatasBr()
+print(data.retorna_mes_cadastro())
+print(data.retorna_semana_cadastro())
+print(data.data_hora_formatada())
+print(data.data_formatada())
+print(data.hora_formatada())
+print(data)
+print(data.define_prazo_expiracao())
