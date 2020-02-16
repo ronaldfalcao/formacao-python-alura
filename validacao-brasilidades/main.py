@@ -4,6 +4,7 @@ from cpf_cnpj import CpfCnpj
 from documento import Documento
 from telefones_br import Telefones
 from datas_br import DatasBr
+from cep_br import BuscaEndereco
 
 
 # Utilizando a classe CPF criada.
@@ -63,3 +64,9 @@ print(data.data_formatada())
 print(data.hora_formatada())
 print(data)
 print(data.define_prazo_expiracao())
+
+# CEPs
+cep = BuscaEndereco("04661200")
+print(cep)
+print(cep.retorna_url_via_cep())
+print(cep.acessa_via_cep())
