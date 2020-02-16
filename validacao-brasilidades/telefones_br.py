@@ -22,10 +22,13 @@ class Telefones:
     def retorna_padrao_telefone(self, numero_telefone):
         return re.findall(self._padrao_br, numero_telefone)
 
-    def __str__(self):
+    def formata_telefone(self):
 
         numero_formatado = re.search(self._padrao_br, self.numero_telefone)
 
         return f'+{numero_formatado.group(1)} ' \
                f'({numero_formatado.group(2)})' \
                f'{numero_formatado.group(3)}-{numero_formatado.group(4)}'
+
+    def __str__(self):
+        return self.formata_telefone()
