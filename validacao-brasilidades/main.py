@@ -2,6 +2,7 @@ from cpf import Cpf
 from cnpj import Cnpj
 from cpf_cnpj import CpfCnpj
 from documento import Documento
+from telefones_br import Telefones
 
 
 # Utilizando a classe CPF criada.
@@ -38,3 +39,8 @@ print(documento)
 print("\nCriando CNPJ")
 documento = Documento.criar_novo_documento("76429709000179")  # CNPJ
 print(documento)
+
+# Telefones
+print("\nCriando telefones")
+telefone = Telefones('123454322')
+print(telefone)
