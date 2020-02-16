@@ -42,5 +42,5 @@ print(documento)
 
 # Telefones
 print("\nCriando telefones")
-telefone = Telefones('123454322')
+telefone = Telefones('55123454322')
 print(telefone)
