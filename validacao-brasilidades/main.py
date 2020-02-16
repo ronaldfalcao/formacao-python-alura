@@ -44,3 +44,7 @@ print(documento)
 print("\nCriando telefones")
 telefone = Telefones('55123454322')
 print(telefone)
+
+print("\nCriando telefones")
+telefone = Telefones('123454322')  # Sem código de país.
+print(telefone)

@@ -13,7 +13,7 @@ class Telefones:
     @staticmethod
     def valida_telefone(numero_telefone):
 
-        padrao_br = '([0-9]{2,3})([0-9]{2})([0-9]{3,4})([0-9]{4})'
+        padrao_br = '([0-9]{2,3})?([0-9]{2})([0-9]{3,4})([0-9]{4})'
 
         resposta = re.findall(padrao_br, numero_telefone)
 
