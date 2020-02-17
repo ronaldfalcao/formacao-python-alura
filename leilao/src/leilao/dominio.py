@@ -1,3 +1,7 @@
+"""
+Classe de exemplo para o curso Testes Automatizados: TDD com Python
+O arquivo inicial faz parte do curso fornecido pela Alura.
+"""
 class Usuario:
 
     def __init__(self, nome):
