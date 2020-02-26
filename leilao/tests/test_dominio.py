@@ -8,8 +8,8 @@ class TestLeilao(TestCase):
         """
         Método para isolar a criação de cenários de teste.
         """
-        self.usuario_a = Usuario("A")
-        self.usuario_b = Usuario("B")
+        self.usuario_a = Usuario("A", 500.00)
+        self.usuario_b = Usuario("B", 500.00)
 
         self.lance_usuario_a = Lance(self.usuario_a, 100.0)
         self.lance_usuario_b = Lance(self.usuario_b, 110.0)
@@ -41,9 +41,8 @@ class TestLeilao(TestCase):
         Teste para verificar as regras se houver apenas um lance.
         """
 
-        self.usuario_a = Usuario("A")
+        self.usuario_a = Usuario("A", 500.00)
         self.lance_usuario_a = Lance(self.usuario_a, 100.0)
-        leilao = Leilao("Leilão de Exemplo")
 
         self.leilao.propor(self.lance_usuario_a)  # Inverteu essas linhas
 
@@ -56,7 +55,7 @@ class TestLeilao(TestCase):
         a ordem de inserção dos lances com o critério de maior e menor valores invertidos.
         """
 
-        self.usuario_c = Usuario("C")
+        self.usuario_c = Usuario("C", 500.00)
 
         self.lance_usuario_c = Lance(self.usuario_c, 200.0)
 
@@ -76,7 +75,7 @@ class TestLeilao(TestCase):
 
     def test_propor_lance_quando_ultimo_usuario_for_diferente(self):
 
-        self.usuario_c = Usuario("C")
+        self.usuario_c = Usuario("C", 500.00)
         self.lance_usuario_c = Lance(self.usuario_c, 200.0)
 
         self.leilao.propor(self.lance_usuario_a)
@@ -87,7 +86,7 @@ class TestLeilao(TestCase):
 
     def test_nao_permitir_dois_lances_seguidos_mesmo_usuario(self):
 
-        self.usuario_c = Usuario("C")
+        self.usuario_c = Usuario("C", 500.00)
 
         with self.assertRaises(ValueError):
             self.lance_usuario_c = Lance(self.usuario_c, 200.0)
@@ -95,5 +94,3 @@ class TestLeilao(TestCase):
 
             self.lance_usuario_c = Lance(self.usuario_c, 250.0)
             self.leilao.propor(self.lance_usuario_c)
-
-
