@@ -9,8 +9,8 @@ lance_usuario_b = Lance(usuario_b, 90.0)
 
 leilao = Leilao("Leilão de Exemplo")
 
-leilao.lances.append(lance_usuario_a)
-leilao.lances.append(lance_usuario_b)
+leilao.propor(lance_usuario_a)
+leilao.propor(lance_usuario_b)
 
 for lance in leilao.lances:
     print(f'O usuário {lance.usuario.nome} deu um lance de R$ {lance.valor}')

@@ -21,8 +21,8 @@ class TestAvaliador(TestCase):
         Teste para avaliar o cenário com dois lances.
         """
 
-        self.leilao.lances.append(self.lance_usuario_a)
-        self.leilao.lances.append(self.lance_usuario_b)
+        self.leilao.propor(self.lance_usuario_a)
+        self.leilao.propor(self.lance_usuario_b)
 
         avaliador = Avaliador()
         avaliador.avaliar(self.leilao)

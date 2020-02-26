@@ -33,6 +33,17 @@ class Leilao:
     def lances(self):
         return self.__lances
 
+    def propor(self, lance: Lance):
+        """
+        Método para encapsulamento dos lances feitos na classe Leilao(). Dessa forma podemos mudar
+        a forma de fazermos os lances, alterando por exemplo o tipo do dado (numpy array, grupos,
+        dicionários, etc.).
+
+        "Tell, don't ask!!!!!!"
+
+        """
+        self.__lances.append(lance)
+
 
 class Avaliador:
 
