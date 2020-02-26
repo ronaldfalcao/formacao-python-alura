@@ -69,3 +69,35 @@ class TestLeilao(TestCase):
 
         self.assertEqual(100.00, self.leilao.menor_lance)
         self.assertEqual(200.00, self.leilao.maior_lance)
+
+    def test_propor_lance_quando_nao_ha_lances(self):
+
+        self.leilao.propor(self.lance_usuario_a)
+        quantidade_de_lances = len(self.leilao.lances)
+
+        self.assertEqual(1, quantidade_de_lances)
+
+    def test_propor_lance_quando_ultimo_usuario_for_diferente(self):
+
+        self.usuario_c = Usuario("C")
+        self.lance_usuario_c = Lance(self.usuario_c, 200.0)
+
+        self.leilao.propor(self.lance_usuario_a)
+        self.leilao.propor(self.lance_usuario_c)
+
+        quantidade_de_lances = len(self.leilao.lances)
+        self.assertEqual(2, quantidade_de_lances)
+
+    def test_nao_permitir_dois_lances_seguidos_mesmo_usuario(self):
+
+        self.usuario_c = Usuario("C")
+
+        self.lance_usuario_c = Lance(self.usuario_c, 200.0)
+        self.leilao.propor(self.lance_usuario_c)
+
+        self.lance_usuario_c = Lance(self.usuario_c, 250.0)
+        self.leilao.propor(self.lance_usuario_c)
+
+        quantidade_de_lances = len(self.leilao.lances)
+        self.assertEqual(1, quantidade_de_lances)
+
