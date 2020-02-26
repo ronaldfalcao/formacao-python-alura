@@ -92,12 +92,14 @@ class TestLeilao(TestCase):
 
         self.usuario_c = Usuario("C")
 
-        self.lance_usuario_c = Lance(self.usuario_c, 200.0)
-        self.leilao.propor(self.lance_usuario_c)
+        try:
+            self.lance_usuario_c = Lance(self.usuario_c, 200.0)
+            self.leilao.propor(self.lance_usuario_c)
 
-        self.lance_usuario_c = Lance(self.usuario_c, 250.0)
-        self.leilao.propor(self.lance_usuario_c)
+            self.lance_usuario_c = Lance(self.usuario_c, 250.0)
+            self.leilao.propor(self.lance_usuario_c)
 
-        quantidade_de_lances = len(self.leilao.lances)
-        self.assertEqual(1, quantidade_de_lances)
+        except ValueError:
+            quantidade_de_lances = len(self.leilao.lances)
+            self.assertEqual(1, quantidade_de_lances)
 
