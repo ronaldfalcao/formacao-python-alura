@@ -4,24 +4,30 @@ from leilao.src.leilao.dominio import Usuario, Lance, Leilao, Avaliador
 
 class TestAvaliador(TestCase):
 
+    def criar_cenario(self):
+        """
+        Método para isolar a criação de cenários de teste.
+        """
+        self.usuario_a = Usuario("A")
+        self.usuario_b = Usuario("B")
+
+        self.lance_usuario_a = Lance(self.usuario_b, 100.0)
+        self.lance_usuario_b = Lance(self.usuario_a, 110.0)
+
+        self.leilao = Leilao("Leilão de Exemplo")
+
     def test_avaliar_quando_dois_lances(self):
         """
         Teste para avaliar o cenário com dois lances.
         """
 
-        usuario_a = Usuario("A")
-        usuario_b = Usuario("B")
+        self.criar_cenario()
 
-        lance_usuario_a = Lance(usuario_b, 100.0)
-        lance_usuario_b = Lance(usuario_a, 110.0)
-
-        leilao = Leilao("Leilão de Exemplo")
-
-        leilao.lances.append(lance_usuario_a)
-        leilao.lances.append(lance_usuario_b)
+        self.leilao.lances.append(self.lance_usuario_a)
+        self.leilao.lances.append(self.lance_usuario_b)
 
         avaliador = Avaliador()
-        avaliador.avaliar(leilao)
+        avaliador.avaliar(self.leilao)
 
         self.assertEqual(100.00, avaliador.menor_lance)
         self.assertEqual(110.00, avaliador.maior_lance)
