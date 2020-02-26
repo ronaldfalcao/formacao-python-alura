@@ -11,8 +11,8 @@ class TestAvaliador(TestCase):
         self.usuario_a = Usuario("A")
         self.usuario_b = Usuario("B")
 
-        self.lance_usuario_a = Lance(self.usuario_b, 100.0)
-        self.lance_usuario_b = Lance(self.usuario_a, 110.0)
+        self.lance_usuario_a = Lance(self.usuario_a, 100.0)
+        self.lance_usuario_b = Lance(self.usuario_b, 110.0)
 
         self.leilao = Leilao("Leilão de Exemplo")
 
