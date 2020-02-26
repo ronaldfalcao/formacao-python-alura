@@ -99,6 +99,8 @@ class TestLeilao(TestCase):
             self.lance_usuario_c = Lance(self.usuario_c, 250.0)
             self.leilao.propor(self.lance_usuario_c)
 
+            self.fail(msg="Não lançou a exceção nesse ponto como deveria ocorrer.")
+
         except ValueError:
             quantidade_de_lances = len(self.leilao.lances)
             self.assertEqual(1, quantidade_de_lances)
