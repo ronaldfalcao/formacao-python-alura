@@ -21,9 +21,13 @@ class Usuario:
         return self.__nome
 
     def propor_lance(self, leilao, valor):
-        lance = Lance(self, valor)
-        leilao.propor(lance)
-        self.__carteira -= valor
+
+        if valor > self.__carteira:
+            raise ValueError(f'Valor maior do que permitido. Diferença {self.__carteira - valor}')
+        else:
+            lance = Lance(self, valor)
+            leilao.propor(lance)
+            self.__carteira -= valor
 
 
 class Lance:
