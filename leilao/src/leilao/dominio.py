@@ -56,5 +56,3 @@ class Leilao:
                 self.menor_lance = lance.valor
 
             self.__lances.append(lance)
-        else:
-            raise ValueError("Não é possível dar dois lances seguidos.")
