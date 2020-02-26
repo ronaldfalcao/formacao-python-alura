@@ -38,8 +38,8 @@ class TestAvaliador(TestCase):
 
         leilao = Leilao("Leilão de Exemplo")
 
-        self.leilao.lances.append(self.lance_usuario_b)  # Inverteu essas linhas
-        self.leilao.lances.append(self.lance_usuario_a)
+        self.leilao.propor(self.lance_usuario_b)  # Inverteu essas linhas
+        self.leilao.propor(self.lance_usuario_a)
 
         avaliador = Avaliador()
         avaliador.avaliar(self.leilao)
@@ -58,7 +58,7 @@ class TestAvaliador(TestCase):
 
         leilao = Leilao("Leilão de Exemplo")
 
-        leilao.lances.append(lance_usuario_a)  # Inverteu essas linhas
+        leilao.propor(lance_usuario_a)  # Inverteu essas linhas
 
         avaliador = Avaliador()
         avaliador.avaliar(leilao)
@@ -76,9 +76,9 @@ class TestAvaliador(TestCase):
 
         lance_usuario_c = Lance(usuario_c, 200.0)
 
-        self.leilao.lances.append(self.lance_usuario_a)  # Inverteu essas linhas
-        self.leilao.lances.append(self.lance_usuario_b)
-        self.leilao.lances.append(lance_usuario_c)
+        self.leilao.propor(self.lance_usuario_a)  # Inverteu essas linhas
+        self.leilao.propor(self.lance_usuario_b)
+        self.leilao.propor(lance_usuario_c)
 
         avaliador = Avaliador()
         avaliador.avaliar(self.leilao)

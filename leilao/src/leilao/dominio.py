@@ -31,7 +31,11 @@ class Leilao:
 
     @property
     def lances(self):
-        return self.__lances
+        """
+        Método para criar os lances, evitando o uso do append() de forma direta. Assim, sempre
+        utilizar o método propor().
+        """
+        return self.__lances[:]  # Criando uma cópia rasa da lista.
 
     def propor(self, lance: Lance):
         """
