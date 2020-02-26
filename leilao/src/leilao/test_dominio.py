@@ -4,7 +4,7 @@ from leilao.src.leilao.dominio import Usuario, Lance, Leilao, Avaliador
 
 class TestAvaliador(TestCase):
 
-    def criar_cenario(self):
+    def setUp(self):
         """
         Método para isolar a criação de cenários de teste.
         """
@@ -20,8 +20,6 @@ class TestAvaliador(TestCase):
         """
         Teste para avaliar o cenário com dois lances.
         """
-
-        self.criar_cenario()
 
         self.leilao.lances.append(self.lance_usuario_a)
         self.leilao.lances.append(self.lance_usuario_b)
