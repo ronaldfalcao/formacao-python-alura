@@ -49,7 +49,9 @@ class Leilao:
 
         """
 
-        if not self.lances or self.__lances[-1].usuario != lance.usuario:
+        if not self.lances \
+                or self.__lances[-1].usuario != lance.usuario \
+                and lance.valor > self.__lances[-1].valor:
             if lance.valor > self.maior_lance:
                 self.maior_lance = lance.valor
             if lance.valor < self.menor_lance:
@@ -57,4 +59,4 @@ class Leilao:
 
             self.__lances.append(lance)
         else:
-            raise ValueError("Não é possível dar dois lances seguidos.")
+            raise ValueError("Erro ao propor lance.")

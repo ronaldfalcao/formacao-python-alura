@@ -29,15 +29,12 @@ class TestLeilao(TestCase):
 
     def test_avaliar_quando_ordem_invertida(self):
         """
-        Teste para avaliar da mesma forma que o teste acima (test_avaliar), mas invertendo
-        a ordem de inserção dos lances com o critério de maior e menor valores invertidos.
+        Teste para avaliar se o lance proposto é maior do que o último lance dado.
         """
 
-        self.leilao.propor(self.lance_usuario_b)  # Inverteu essas linhas
-        self.leilao.propor(self.lance_usuario_a)
-
-        self.assertEqual(100.00, self.leilao.menor_lance)
-        self.assertEqual(110.00, self.leilao.maior_lance)
+        with self.assertRaises(ValueError):
+            self.leilao.propor(self.lance_usuario_b)  # Inverteu essas linhas
+            self.leilao.propor(self.lance_usuario_a)
 
     def test_avaliar_quando_houver_um_lance(self):
         """
