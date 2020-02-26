@@ -36,19 +36,13 @@ class TestAvaliador(TestCase):
         a ordem de inserção dos lances com o critério de maior e menor valores invertidos.
         """
 
-        usuario_a = Usuario("A")
-        usuario_b = Usuario("B")
-
-        lance_usuario_a = Lance(usuario_b, 100.0)
-        lance_usuario_b = Lance(usuario_a, 110.0)
-
         leilao = Leilao("Leilão de Exemplo")
 
-        leilao.lances.append(lance_usuario_b)  # Inverteu essas linhas
-        leilao.lances.append(lance_usuario_a)
+        self.leilao.lances.append(self.lance_usuario_b)  # Inverteu essas linhas
+        self.leilao.lances.append(self.lance_usuario_a)
 
         avaliador = Avaliador()
-        avaliador.avaliar(leilao)
+        avaliador.avaliar(self.leilao)
 
         self.assertEqual(100.00, avaliador.menor_lance)
         self.assertEqual(110.00, avaliador.maior_lance)
@@ -78,22 +72,16 @@ class TestAvaliador(TestCase):
         a ordem de inserção dos lances com o critério de maior e menor valores invertidos.
         """
 
-        usuario_a = Usuario("A")
-        usuario_b = Usuario("B")
         usuario_c = Usuario("C")
 
-        lance_usuario_a = Lance(usuario_a, 100.0)
-        lance_usuario_b = Lance(usuario_b, 110.0)
         lance_usuario_c = Lance(usuario_c, 200.0)
 
-        leilao = Leilao("Leilão de Exemplo")
-
-        leilao.lances.append(lance_usuario_a)  # Inverteu essas linhas
-        leilao.lances.append(lance_usuario_b)
-        leilao.lances.append(lance_usuario_c)
+        self.leilao.lances.append(self.lance_usuario_a)  # Inverteu essas linhas
+        self.leilao.lances.append(self.lance_usuario_b)
+        self.leilao.lances.append(lance_usuario_c)
 
         avaliador = Avaliador()
-        avaliador.avaliar(leilao)
+        avaliador.avaliar(self.leilao)
 
         self.assertEqual(100.00, avaliador.menor_lance)
         self.assertEqual(200.00, avaliador.maior_lance)
