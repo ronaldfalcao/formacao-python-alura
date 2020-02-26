@@ -49,7 +49,7 @@ class Leilao:
 
         """
 
-        if len(self.lances) == 0 or self.__lances[-1].usuario != lance.usuario:
+        if not self.lances or self.__lances[-1].usuario != lance.usuario:
             if lance.valor > self.maior_lance:
                 self.maior_lance = lance.valor
             if lance.valor < self.menor_lance:
