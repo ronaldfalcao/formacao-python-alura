@@ -1,7 +1,16 @@
 from extrator import ExtratorArgumentosUrl
 
-url = "https://bytebank.com/cambio?moedaorigem=PESO&moedadestino=LIBRAS"
+url = "https://www.bytebank.com.br/cambio?moedaorigem=real&moedadestino=dolar&valor=150"
 
-moedas = ExtratorArgumentosUrl(url)
+print("Caso 1")
+cambio = ExtratorArgumentosUrl(url)
+moedaOrigem, moedaDestino = cambio.retorna_moedas()
+valor = cambio.retorna_valor()
+print(moedaOrigem, moedaDestino, valor)
 
-print(moedas.retorna_moedas())
+print("\nCaso 2")
+url = "https://www.bytebank.com.br/cambio?moedaorigem=moedadestino&moedadestino=dolar&valor=150"
+cambio = ExtratorArgumentosUrl(url)
+moedaOrigem, moedaDestino = cambio.retorna_moedas()
+valor = cambio.retorna_valor()
+print(moedaOrigem, moedaDestino, valor)
