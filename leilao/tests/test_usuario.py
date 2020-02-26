@@ -1,4 +1,5 @@
 from leilao.src.leilao.dominio import Usuario, Leilao
+import pytest
 
 
 def test_descontar_valor_lance_carteira_usuario():
@@ -30,8 +31,8 @@ def test_permite_lance_valor_igual_valor_carteira_usuario():
 
 def test_nao_permite_lance_acima_valor_carteira_usuario():
 
-    usuario_a = Usuario("A", 100)
-    leilao = Leilao("Exemplo Leilão")
-    usuario_a.propor_lance(leilao, 200)
+    with pytest.raises(ValueError):
+        usuario_a = Usuario("A", 100)
+        leilao = Leilao("Exemplo Leilão")
+        usuario_a.propor_lance(leilao, 200)
 
-    assert usuario_a.carteira == 100
