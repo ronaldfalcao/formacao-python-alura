@@ -3,8 +3,6 @@ Classe de exemplo para o curso Testes Automatizados: TDD com Python
 O arquivo inicial faz parte do curso fornecido pela Alura.
 """
 
-import sys
-
 
 class Usuario:
 
@@ -22,12 +20,15 @@ class Usuario:
 
     def propor_lance(self, leilao, valor):
 
-        if valor > self.__carteira:
+        if not self.valor_eh_valido(valor):
             raise ValueError(f'Valor maior do que permitido. Diferença {self.__carteira - valor}')
         else:
             lance = Lance(self, valor)
             leilao.propor(lance)
             self.__carteira -= valor
+
+    def valor_eh_valido(self, valor):
+        return valor <= self.__carteira
 
 
 class Lance:
@@ -42,8 +43,8 @@ class Leilao:
     def __init__(self, descricao):
         self.descricao = descricao
         self.__lances = []
-        self.maior_lance = sys.float_info.min
-        self.menor_lance = sys.float_info.max
+        self.maior_lance = 0.0  # Não é mais necessário definir esses valores como maior e menor.
+        self.menor_lance = 0.0
 
     @property
     def lances(self):
@@ -63,14 +64,26 @@ class Leilao:
 
         """
 
-        if not self.lances \
-                or self.__lances[-1].usuario != lance.usuario \
-                and lance.valor > self.__lances[-1].valor:
-            if lance.valor > self.maior_lance:
-                self.maior_lance = lance.valor
-            if lance.valor < self.menor_lance:
+        if self._lance_eh_valido(lance):
+            if not self._tem_lances():
                 self.menor_lance = lance.valor
+
+            self.maior_lance = lance.valor
 
             self.__lances.append(lance)
         else:
             raise ValueError("Erro ao propor lance.")
+
+    def _tem_lances(self):
+        return self.__lances
+
+    def _usuarios_diferentes(self, lance):
+        return self.__lances[-1].usuario != lance.usuario
+
+    def _maior_que_lance_anterior(self, lance):
+        return lance.valor > self.__lances[-1].valor
+
+    def _lance_eh_valido(self, lance):
+        return not self.lances or \
+               (self._usuarios_diferentes(lance)) and \
+               (self._maior_que_lance_anterior(lance))
