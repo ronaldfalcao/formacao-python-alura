@@ -72,17 +72,21 @@ class Leilao:
             self.maior_lance = lance.valor
 
             self.__lances.append(lance)
-        else:
-            raise LanceInvalido("Erro ao propor lance.")
 
     def _tem_lances(self):
         return self.__lances
 
     def _usuarios_diferentes(self, lance):
-        return self.__lances[-1].usuario != lance.usuario
+        if self.__lances[-1].usuario != lance.usuario:
+            return True
+        else:
+            raise LanceInvalido("Um mesmo usuário não pode fazer lances seguidos.")
 
     def _maior_que_lance_anterior(self, lance):
-        return lance.valor > self.__lances[-1].valor
+        if lance.valor > self.__lances[-1].valor:
+            return True
+        else:
+            raise LanceInvalido("O lance precisa ser maior do que o lance anterior.")
 
     def _lance_eh_valido(self, lance):
         return not self.lances or \
