@@ -2,6 +2,7 @@
 Classe de exemplo para o curso Testes Automatizados: TDD com Python
 O arquivo inicial faz parte do curso fornecido pela Alura.
 """
+from excecoes import LanceInvalido
 
 
 class Usuario:
@@ -21,7 +22,7 @@ class Usuario:
     def propor_lance(self, leilao, valor):
 
         if not self.valor_eh_valido(valor):
-            raise ValueError(f'Valor maior do que permitido. Diferença {self.__carteira - valor}')
+            raise LanceInvalido(f'Valor maior do que permitido. Diferença {self.__carteira - valor}')
         else:
             lance = Lance(self, valor)
             leilao.propor(lance)
@@ -72,7 +73,7 @@ class Leilao:
 
             self.__lances.append(lance)
         else:
-            raise ValueError("Erro ao propor lance.")
+            raise LanceInvalido("Erro ao propor lance.")
 
     def _tem_lances(self):
         return self.__lances

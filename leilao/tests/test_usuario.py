@@ -1,3 +1,4 @@
+from excecoes import LanceInvalido
 from leilao.src.leilao.dominio import Usuario, Leilao
 import pytest
 
@@ -32,6 +33,6 @@ def test_permite_lance_valor_igual_valor_carteira_usuario(criar_usuario, criar_l
 
 def test_nao_permite_lance_acima_valor_carteira_usuario(criar_usuario, criar_leilao):
 
-    with pytest.raises(ValueError):
+    with pytest.raises(LanceInvalido):
         criar_usuario.propor_lance(criar_leilao, 200)
 

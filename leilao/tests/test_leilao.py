@@ -1,4 +1,5 @@
 from unittest import TestCase
+from excecoes import LanceInvalido
 from leilao.src.leilao.dominio import Usuario, Lance, Leilao
 
 
@@ -32,7 +33,7 @@ class TestLeilao(TestCase):
         Teste para avaliar se o lance proposto é maior do que o último lance dado.
         """
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(LanceInvalido):
             self.leilao.propor(self.lance_usuario_b)  # Inverteu essas linhas
             self.leilao.propor(self.lance_usuario_a)
 
@@ -88,7 +89,7 @@ class TestLeilao(TestCase):
 
         self.usuario_c = Usuario("C", 500.00)
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(LanceInvalido):
             self.lance_usuario_c = Lance(self.usuario_c, 200.0)
             self.leilao.propor(self.lance_usuario_c)
 
